@@ -37,9 +37,24 @@ function buildGrid(sideCount) {
 		$('#gridContainer').append("<div class='gridSquare'></div>");
 		//	});
 		//}
-		$('.gridSquare').css({"width": squareSize, "height": squareSize})
 	}
+	$('.gridSquare').css({"width": squareSize, "height": squareSize})
+	$('.gridSquare').hover(function() {
+		$(this).css("background-color", "red");
+	})
+
 };
 
 buildGrid(sideCount);
+
+$('#gridReset').click(function() {
+	do {
+		sideCount = prompt("Set new grid size by entering the number of squares on a side (more than 100 may be slow to load):", "Default: 16");
+	}
+	while (isNaN(sideCount) === true);
+
+	$('.gridSquare').remove();
+	buildGrid(sideCount);
+})
+
 });

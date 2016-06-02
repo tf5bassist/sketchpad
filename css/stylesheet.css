@@ -11,6 +11,7 @@
 	display: inline-block;
 }
 
+/*Not used*/
 .gridSquareEnd {
 	/*height: 20px;
 	width: 20px;
@@ -18,4 +19,8 @@
 	float: left;
 	clear: right;
 	display: inline-block;
+}
+
+#gridReset {
+	float: right;
 }
