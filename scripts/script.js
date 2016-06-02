@@ -1,16 +1,45 @@
-var sideCount = 16
+$(document).ready(function() {
+// Define vars and shit
+var sideCount = 16;
+var squareSize;
+var	containerSize = $("#gridContainer").width();
+
+
+/*	var containerSize = $("#gridContainer").ready(function() {
+	$("#gridContainer").width()
+*///});
+
+
+// Figure out how big the squares should be based on #gridContainer width divided by number of grids on a side
+// Triggered as soon as buildGrid runs
+function determineSquareSize (sideCount) {
+	console.log('Container size: ' + containerSize);
+	squareSize = containerSize / sideCount;
+	console.log('Square size: ' + squareSize);
+	return squareSize;
+};
 
 function buildGrid(sideCount) {
-	for (var i = 0; i < sideCount * sideCount; i++) {
-		if (i % sideCount = 0) {
-			$(document).ready(function{
-				$('div.gridContainer').append('<div class="gridSquareEnd"></div>');
-			})
+	determineSquareSize(sideCount);
+	
+	for (var i = 1; i <= sideCount * sideCount; i++) {
+		// var remainder = i % sideCount;
+		// Removing if/else, no longer need a "return" square because CSS div CRLF is fucking dumb
+/*		if (i % sideCount === 0) {
+			$(document).ready(function() {
+				$('#gridContainer').append('<div class="gridSquareEnd"></div>');
+			});
 
-		};
-		else {
-			$(document).ready(function{
-				$('div.gridContainer').append('<div class="gridSquare"></div>');
-			})
 		}
+		else {
+			$(document).ready(function() {
+*/				
+		$('#gridContainer').append("<div class='gridSquare'></div>");
+		//	});
+		//}
+		$('.gridSquare').css({"width": squareSize, "height": squareSize})
 	}
+};
+
+buildGrid(sideCount);
+});
